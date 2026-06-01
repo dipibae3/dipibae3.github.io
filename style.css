@@ -39,6 +39,26 @@ body {
     color: rgb(210, 15, 57);
 }
 
+.yellowtext {
+    color: rgb(223, 142, 29);
+}
+
+.greentext {
+    color: rgb(64, 160, 43);
+}
+
+.skytext {
+    color: rgb(4, 165, 229);
+}
+
+.bluetext {
+    color: rgb(30, 102, 245);
+}
+
+.purpletext {
+    color: rgb(136, 57, 239);
+}
+
 .line-container {
     position: relative;
     width: 480px;

@@ -169,8 +169,10 @@ body {
 
 .daycontainer.active {
     opacity: 1;
+    display: block;
 }
 
 .daycontainer {
     opacity: 0;
+    display: none;
 }

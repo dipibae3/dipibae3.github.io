@@ -5,10 +5,21 @@ sidebarbuttons.forEach((el, idx) => {
     el.addEventListener('click', () => {
         sidebarbuttons.forEach((otherel, otheridx) => {
             otherel.classList.remove('active');
-            document.querySelector(`#day${otheridx+1}`).classList.remove('active');
+            const dayEl = document.querySelector(`#day${otheridx+1}`);
+            dayEl.classList.remove('active');
+            dayEl.style.display = 'none';
+            void dayEl.offsetHeight; 
+            dayEl.style.display = '';
         });
         el.classList.add('active');
-        document.querySelector(`#day${idx+1}`).classList.add('active');
+
+        const newDay = document.querySelector(`#day${idx+1}`);
+        newDay.querySelectorAll('.anim').forEach(animEl => {
+            animEl.style.animation = 'none';
+            void animEl.offsetHeight; 
+            animEl.style.animation = '';
+        });
+        newDay.classList.add('active');
     });
 });
 

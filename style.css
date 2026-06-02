@@ -173,4 +173,8 @@ body {
 
 .daycontainer {
     display: none;
+    position: relative;
+    overflow: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }

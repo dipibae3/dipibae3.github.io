@@ -179,3 +179,10 @@ body {
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
 }
+
+#day1 .daycount {
+     background: linear-gradient(135deg, rgb(64, 160, 43) 0%, rgb(4, 165, 229) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}

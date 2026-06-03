@@ -24,6 +24,18 @@ sidebarbuttons.forEach((el, idx) => {
 });
 
 sidebarbuttons[0].classList.add('active');
-document.querySelector('#day1').classList.add('active')
+document.querySelector('#day1').classList.add('active');
 
-console.log(sidebarbuttons)
+const SidebarOverlay = document.querySelector('#SidebarOverlay');
+
+document.querySelector('#SidebarOpenButton').addEventListener('click', () => {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.classList.toggle('open');
+    SidebarOverlay.classList.toggle('open');
+});
+
+SidebarOverlay.addEventListener('click', () => {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.classList.remove('open');
+    SidebarOverlay.classList.remove('open');
+});

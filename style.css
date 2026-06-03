@@ -238,6 +238,7 @@ body {
 
     .schedulecard {
         width: 70%;
+        max-width: none;
         margin: 45px auto;
     }
 

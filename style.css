@@ -177,6 +177,7 @@ body {
         margin-bottom: 10px;
         padding: 10px;
         transition: transform 0.3s ease, background-color 0.3s ease, font-weight 0.3s ease;
+        color: rgb(0, 0, 0);
 
         span {
             color: rgba(0, 0, 0, 0.5);
@@ -268,6 +269,16 @@ body {
 @media (max-width: 1000px) {
     body {
         margin-left: 0;
+    }
+    .content {
+        font-size: 150%;
+    }
+    .schedulecard {
+        width: 70%;
+        margin: 45px auto;
+    }
+    .vertical-line-dotted {
+        height: 105px;
     }
     .sidebar {
         width: 500px;

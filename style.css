@@ -3,7 +3,7 @@
 body {
     font-family: 'Pretendard Variable';
     background-color: rgb(239, 241, 245);
-    margin-left: 200px
+    margin-left: 200px;
 }
 
 @keyframes fadeInUp {
@@ -30,18 +30,16 @@ body {
     }
 }
 
-@keyframes MobileSideBar {
-    0% {
-        opacity: 0;
-        transform: scale(0.7);
-        filter: blur(10px);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-        filter: blur(0);
-    }
-}
+/* ── 날짜별 색상 변수 ── */
+
+#day1 { --color1: rgb(210, 15, 57);   --color2: rgb(255, 84, 100);  }
+#day2 { --color1: rgb(223, 142, 29);  --color2: rgb(255, 187, 94);  }
+#day3 { --color1: rgb(64, 160, 43);   --color2: rgb(16, 230, 0);    }
+#day4 { --color1: rgb(4, 165, 229);   --color2: rgb(96, 202, 255);  }
+#day5 { --color1: rgb(30, 102, 245);  --color2: rgb(98, 155, 255);  }
+#day6 { --color1: rgb(136, 57, 239);  --color2: rgb(173, 126, 255); }
+
+/* ── DAY 카운트 텍스트 ── */
 
 .daycount {
     font-size: 4em;
@@ -49,66 +47,54 @@ body {
     font-weight: 900;
     margin-block-end: 0;
     width: 100%;
-}
-
-#day1 .daycount {
-    background: linear-gradient(0deg, rgb(210, 15, 57) 0%, rgb(255, 84, 100) 100%);
+    background: linear-gradient(0deg, var(--color1) 0%, var(--color2) 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
-#day2 .daycount {
-    background: linear-gradient(0deg, rgb(223, 142, 29) 0%, rgb(255, 187, 94) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+/* ── 일정 카드 ── */
+
+.schedulecard {
+    display: flex;
+    border-radius: 30px;
+    padding: 15px 20px;
+    margin: 30px auto;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    max-width: 400px;   /* 고정값 → max-width로 변경 */
+    width: 90%;         /* 모바일 대응 */
+    background-color: color-mix(in srgb, var(--color1) 10%, transparent);
+    box-shadow: 0 0 30px color-mix(in srgb, var(--color1) 15%, transparent);
 }
 
-#day3 .daycount {
-    background: linear-gradient(0deg, rgb(64, 160, 43) 0%, rgb(16, 230, 0) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+/* schedulecard 안의 span만 색상 적용 (전역 span 선택자 제거) */
+.schedulecard span {
+    color: var(--color1);
+    margin: 0;
+    text-align: center;
+    font-weight: 600;
 }
 
-#day4 .daycount {
-    background: linear-gradient(0deg, rgb(4, 165, 229) 0%, rgb(96, 202, 255) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+.schedulecard p {
+    font-size: 1.2em;
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+    margin: 0;
 }
 
-#day5 .daycount {
-    background: linear-gradient(0deg, rgb(30, 102, 245) 0%, rgb(98, 155, 255) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-#day6 .daycount {
-    background: linear-gradient(0deg, rgb(136, 57, 239) 0%, rgb(173, 126, 255) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
+/* ── 연결선 컨테이너 ── */
 
 .line-container {
     position: relative;
-    width: 480px;
+    max-width: 480px;   /* 고정값 → max-width로 변경 */
+    width: 90%;         /* 모바일 대응 */
     height: 70px;
     margin: 0 auto;
     display: flex;
     align-items: center;
-}
-
-.vertical-line-dotted {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 70px;
-    border-left: 4px dotted rgba(210, 15, 57, 0.40);
 }
 
 .line-container p {
@@ -117,15 +103,16 @@ body {
     margin: 0;
     font-weight: 600;
     white-space: nowrap;
+    color: color-mix(in srgb, var(--color1) 70%, transparent);
 }
 
-.anim {
-    opacity: 0;
-    animation: fadeInUp 600ms cubic-bezier(0.165, 0.84, 0.44, 1) both;
-    animation-delay: calc(var(--dl) * 0.05s); 
-    transition: opacity 0.3s ease;
-    will-change: filter; 
-    transform: translateZ(0);
+.vertical-line-dotted {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 70px;
+    border-left: 5px dotted color-mix(in srgb, var(--color1) 40%, transparent);
 }
 
 .sidebar {
@@ -141,143 +128,85 @@ body {
     box-shadow: 5px 0 20px rgba(76, 79, 105, 0.25);
     text-align: center;
     animation: sidebarappear 600ms cubic-bezier(0.165, 0.84, 0.44, 1) both;
-
-    button {
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0);
-        font-size: 1.5em;
-        font-family: 'Pretendard Variable';
-        font-weight: 350;
-        border-width: 0;
-        border-radius: 20px;
-        margin-bottom: 10px;
-        padding: 10px;
-        transition: transform 0.3s ease, background-color 0.3s ease, font-weight 0.3s ease;
-        color: rgb(0, 0, 0);
-
-        span {
-            color: rgba(0, 0, 0, 0.5);
-            font-size: 0.65em;
-        }
-    }
-
-    button:hover {
-        transform: scale(0.95);
-        background-color: rgba(0, 0, 0, 0.1);
-    }
-
-    button.active {
-        font-weight: 750;
-    }
-    button.active:hover {
-        transform: scale(0.95);
-        background-color: rgba(0, 0, 0, 0.1);
-    }
-
-    #EmphasizeHawaii {
-        background: linear-gradient(135deg, rgb(64, 160, 43) 0%, rgb(4, 165, 229) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        font-size: 2.5em;
-        font-weight: 700;
-    }
 }
 
-.schedulecard {
-    border-radius: 50px;
-    padding: 10px 20px;
-    margin: 30px auto;
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    justify-content: center;
-    width: 400px;
-
-    p {
-        font-size: 1.2em;
-        font-weight: 700;
-        line-height: 0;
-        text-align: center;
-        white-space: nowrap;
-    }
+.sidebar button {
+    width: 100%;
+    background-color: transparent;
+    font-size: 1.5em;
+    font-family: 'Pretendard Variable';
+    font-weight: 350;
+    border: 1.5px solid transparent;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    padding: 10px;
+    transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, font-weight 0.3s ease;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
 }
 
-
-.redtext {
-    color: rgb(210, 15, 57);
+.sidebar button .dayspan {
+    color: rgba(0, 0, 0, 0.45);
+    font-size: 0.65em;
 }
 
-.yellowtext {
-    color: rgb(223, 142, 29);
+.sidebar button:hover {
+    transform: scale(0.95);
+    background-color: rgba(0, 0, 0, 0.08);
 }
 
-.greentext {
-    color: rgb(64, 160, 43);
+/* active 상태: 흰 배경 + 테두리로 명확히 구분 */
+.sidebar button.active {
+    font-weight: 700;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-color: rgba(0, 0, 0, 0.12);
 }
 
-.skytext {
-    color: rgb(4, 165, 229);
+.sidebar button.active:hover {
+    transform: scale(0.95);
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
-.bluetext {
-    color: rgb(30, 102, 245);
+#EmphasizeHawaii {
+    background: linear-gradient(135deg, rgb(64, 160, 43) 0%, rgb(4, 165, 229) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2.5em;
+    font-weight: 700;
 }
 
-.purpletext {
-    color: rgb(136, 57, 239);
-}
+/* ── daycontainer 표시/숨김 ── */
 
-#day1 .schedulecard {
-    background-color: rgba(210, 15, 57, 0.10);
-    box-shadow: 0 0 30px rgba(210, 15, 57, 0.15);
-}
-
-#day2 .schedulecard {
-    background-color: rgba(223, 142, 29, 0.1);
-    box-shadow: 0 0 30px rgba(223, 142, 29, 0.15);
-}
-
-#day3 .schedulecard {
-    background-color: rgba(64, 160, 43, 0.10);
-    box-shadow: 0 0 30px rgba(64, 160, 43, 0.15);
-}
-
-#day4 .schedulecard {
-    background-color: rgba(4, 165, 229, 0.1);
-    box-shadow: 0 0 30px rgba(4, 165, 229, 0.15);
-}
-
-#day5 .schedulecard {
-    background-color: rgba(20, 102, 245, 0.10);
-    box-shadow: 0 0 30px rgba(20, 102, 245, 0.15);
-}
-
-#day6 .schedulecard {
-    background-color: rgba(136, 57, 239, 0.1);
-    box-shadow: 0 0 30px rgba(136, 5, 239,0.15);
+.daycontainer {
+    display: none;
+    position: relative;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
 .daycontainer.active {
     display: block;
 }
 
-.daycontainer {
-    display: none;
-    position: relative;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-}
+/* ── 모바일 메뉴 열기 버튼 ── */
 
 #SidebarOpenButton {
     display: none;
     position: fixed;
-    top: 20px;
-    left: 30px;
-    z-index: 1;
+    top: 16px;
+    left: 20px;
+    z-index: 10000;
     border: none;
-    font-size: 3em;
-    color: rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    font-size: 2em;
+    color: rgba(0, 0, 0, 0.55);
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 4px 10px;
+    cursor: pointer;
+    line-height: 1;
 }
 
 #SidebarOverlay {
@@ -289,71 +218,77 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 9998;
     opacity: 0;
-    visibility: hidden; 
+    visibility: hidden;
     transition: opacity 0.3s ease;
 }
 
+#SidebarOverlay.open {
+    visibility: visible;
+    opacity: 1;
+}
 
-
-@media (max-width: 1000px) {
+@media not (orientation: landscape) {
     body {
         margin-left: 0;
     }
+
     .content {
         font-size: 150%;
     }
+
     .schedulecard {
         width: 70%;
         margin: 45px auto;
     }
+
     .vertical-line-dotted {
         height: 105px;
     }
+
+    .line-container {
+        height: 105px;
+    }
+
     .sidebar {
         width: 500px;
         border-radius: 60px;
         animation: none;
-        transform: translateX(-100px);
         height: auto;
-        position: absolute;
+        position: fixed;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%) scale(0.8);
         z-index: 9999;
-        backdrop-filter: blur(20px) brightness(2);
-        -webkit-backdrop-filter: blur(20px) brightness(2);
-        background-color: rgba(230, 233, 239, 0.3);
+        backdrop-filter: blur(20px) brightness(1.5);
+        -webkit-backdrop-filter: blur(20px) brightness(1.5);
+        background-color: rgba(230, 233, 239, 0.85);
         opacity: 0;
         filter: blur(20px);
-        transform: translate(-50%, -50%) scale(0.8);
         transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+        overflow-y: auto;
+        max-height: 90vh;
+    }
 
-        #EmphasizeHawaii {
-            line-height: 1.6;
-            font-size: 5em;
-        }
+    .sidebar.open {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        filter: blur(0);
+    }
 
-        button {
-            font-size: 3em;
-            margin-bottom: 20px;
-            padding: 20px;
-            width: 60%;
-            border-radius: 30px;
-        }
+    .sidebar #EmphasizeHawaii {
+        line-height: 1.6;
+        font-size: 5em;
+    }
 
-        &.open {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
-            filter: blur(0);
-        }
+    .sidebar button {
+        font-size: 3em;
+        margin-bottom: 20px;
+        padding: 20px;
+        width: 60%;
+        border-radius: 30px;
     }
 
     #SidebarOpenButton {
         display: block;
-    }
-
-    #SidebarOverlay.open {
-        visibility: visible;
-        opacity: 1;
     }
 }

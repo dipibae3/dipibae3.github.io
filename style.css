@@ -182,20 +182,20 @@ body {
             color: rgba(0, 0, 0, 0.5);
             font-size: 0.65em;
         }
-    };
+    }
 
     button:hover {
         transform: scale(0.95);
         background-color: rgba(0, 0, 0, 0.1);
-    };
+    }
 
     button.active {
         font-weight: 750;
-    };
+    }
     button.active:hover {
         transform: scale(0.95);
         background-color: rgba(0, 0, 0, 0.1);
-    };
+    }
 
     #EmphasizeHawaii {
         background: linear-gradient(135deg, rgb(64, 160, 43) 0%, rgb(4, 165, 229) 100%);
@@ -268,16 +268,6 @@ body {
 @media (max-width: 1000px) {
     body {
         margin-left: 0;
-    }
-    .content {
-        font-size: 150%;
-    }
-    .schedulecard {
-        width: 70%;
-        margin: 45px auto;
-    }
-    .vertical-line-dotted {
-        height: 105px;
     }
     .sidebar {
         width: 500px;

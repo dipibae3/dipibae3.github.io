@@ -93,30 +93,6 @@ body {
     background-clip: text;
 }
 
-.redtext {
-    color: rgb(210, 15, 57);
-}
-
-.yellowtext {
-    color: rgb(223, 142, 29);
-}
-
-.greentext {
-    color: rgb(64, 160, 43);
-}
-
-.skytext {
-    color: rgb(4, 165, 229);
-}
-
-.bluetext {
-    color: rgb(30, 102, 245);
-}
-
-.purpletext {
-    color: rgb(136, 57, 239);
-}
-
 .line-container {
     position: relative;
     width: 480px;
@@ -210,10 +186,8 @@ body {
 
 .schedulecard {
     border-radius: 50px;
-    box-shadow: 0 0 30px rgba(210, 15, 57, 0.15);
     padding: 10px 20px;
     margin: 30px auto;
-    background-color: rgba(210, 15, 57, 0.10);
     display: flex;
     gap: 16px;
     align-items: center;
@@ -227,6 +201,61 @@ body {
         text-align: center;
         white-space: nowrap;
     }
+}
+
+
+.redtext {
+    color: rgb(210, 15, 57);
+}
+
+.yellowtext {
+    color: rgb(223, 142, 29);
+}
+
+.greentext {
+    color: rgb(64, 160, 43);
+}
+
+.skytext {
+    color: rgb(4, 165, 229);
+}
+
+.bluetext {
+    color: rgb(30, 102, 245);
+}
+
+.purpletext {
+    color: rgb(136, 57, 239);
+}
+
+#day1 .schedulecard {
+    background-color: rgba(210, 15, 57, 0.10);
+    box-shadow: 0 0 30px rgba(210, 15, 57, 0.15);
+}
+
+#day2 .schedulecard {
+    background-color: rgba(223, 142, 29, 0.1);
+    box-shadow: 0 0 30px rgba(223, 142, 29, 0.15);
+}
+
+#day3 .schedulecard {
+    background-color: rgba(64, 160, 43, 0.10);
+    box-shadow: 0 0 30px rgba(64, 160, 43, 0.15);
+}
+
+#day4 .schedulecard {
+    background-color: rgba(4, 165, 229, 0.1);
+    box-shadow: 0 0 30px rgba(4, 165, 229, 0.15);
+}
+
+#day5 .schedulecard {
+    background-color: rgba(20, 102, 245, 0.10);
+    box-shadow: 0 0 30px rgba(20, 102, 245, 0.15);
+}
+
+#day6 .schedulecard {
+    background-color: rgba(136, 57, 239, 0.1);
+    box-shadow: 0 0 30px rgba(136, 5, 239,0.15);
 }
 
 .daycontainer.active {

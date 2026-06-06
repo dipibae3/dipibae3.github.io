@@ -30,7 +30,28 @@ body {
     }
 }
 
-/* ── 날짜별 색상 변수 ── */
+@keyframes dipi {
+    0% {
+        background-position-x: 0px;
+    }
+    100% {
+        background-position-x: -2800px;
+    }
+}
+
+@keyframes dipijump {
+    0% {
+        transform: translateY(0);
+        animation-timing-function: cubic-bezier(.18,.72,.38,.94);
+    }
+    50% {
+        transform: translateY(-40px);
+        animation-timing-function: cubic-bezier(.72,.18,.94,.38);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
 
 #day1 { --color1: rgb(210, 15, 57);   --color2: rgb(255, 84, 100);  }
 #day2 { --color1: rgb(223, 142, 29);  --color2: rgb(255, 187, 94);  }
@@ -38,8 +59,6 @@ body {
 #day4 { --color1: rgb(4, 165, 229);   --color2: rgb(96, 202, 255);  }
 #day5 { --color1: rgb(30, 102, 245);  --color2: rgb(98, 155, 255);  }
 #day6 { --color1: rgb(136, 57, 239);  --color2: rgb(173, 126, 255); }
-
-/* ── DAY 카운트 텍스트 ── */
 
 .daycount {
     font-size: 4em;
@@ -53,7 +72,6 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-/* ── 일정 카드 ── */
 
 .schedulecard {
     display: flex;
@@ -63,13 +81,12 @@ body {
     gap: 16px;
     align-items: center;
     justify-content: center;
-    max-width: 400px;   /* 고정값 → max-width로 변경 */
-    width: 90%;         /* 모바일 대응 */
+    max-width: 400px;
+    width: 90%;
     background-color: color-mix(in srgb, var(--color1) 10%, transparent);
     box-shadow: 0 0 30px color-mix(in srgb, var(--color1) 15%, transparent);
 }
 
-/* schedulecard 안의 span만 색상 적용 (전역 span 선택자 제거) */
 .schedulecard span {
     color: var(--color1);
     margin: 0;
@@ -85,12 +102,10 @@ body {
     margin: 0;
 }
 
-/* ── 연결선 컨테이너 ── */
-
 .line-container {
     position: relative;
-    max-width: 480px;   /* 고정값 → max-width로 변경 */
-    width: 90%;         /* 모바일 대응 */
+    max-width: 480px;
+    width: 90%;
     height: 70px;
     margin: 0 auto;
     display: flex;
@@ -155,7 +170,6 @@ body {
     background-color: rgba(0, 0, 0, 0.08);
 }
 
-/* active 상태: 흰 배경 + 테두리로 명확히 구분 */
 .sidebar button.active {
     font-weight: 700;
     background-color: rgba(255, 255, 255, 0.75);
@@ -176,8 +190,6 @@ body {
     font-weight: 700;
 }
 
-/* ── daycontainer 표시/숨김 ── */
-
 .daycontainer {
     display: none;
     position: relative;
@@ -188,8 +200,6 @@ body {
 .daycontainer.active {
     display: block;
 }
-
-/* ── 모바일 메뉴 열기 버튼 ── */
 
 #SidebarOpenButton {
     display: none;
@@ -227,6 +237,21 @@ body {
     opacity: 1;
 }
 
+.dipi {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 200px;
+    height: 123px;
+    background-image: url("dipiimage.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-position-x: 0px;
+    background-position-y: center;
+    animation: dipi 1.4s steps(14) both infinite, dipijump 1.4s both infinite;
+}
+
 @media not (orientation: landscape) {
     body {
         margin-left: 0;
@@ -260,9 +285,9 @@ body {
         left: 50%;
         transform: translate(-50%, -50%) scale(0.8);
         z-index: 9999;
-        backdrop-filter: blur(20px) brightness(1.5);
-        -webkit-backdrop-filter: blur(20px) brightness(1.5);
-        background-color: rgba(230, 233, 239, 0.85);
+        backdrop-filter: blur(20px) brightness(2);
+        -webkit-backdrop-filter: blur(20px) brightness(2);
+        background-color: transparent;
         opacity: 0;
         filter: blur(20px);
         transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease;

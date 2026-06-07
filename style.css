@@ -41,15 +41,32 @@ body {
 
 @keyframes dipijump {
     0% {
-        transform: translateY(0);
-        animation-timing-function: cubic-bezier(.18,.72,.38,.94);
+        transform: translateY(0) scaleX(1);
+        animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
     }
-    50% {
-        transform: translateY(-40px);
-        animation-timing-function: cubic-bezier(.72,.18,.94,.38);
+    30% {
+        transform: translateY(-40px) scaleX(0.85);
+        animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+    }
+    60% {
+        transform: translateY(0) scaleX(1);
+        animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+    75% {
+        transform: translateY(-15px) scaleX(0.93);
+        animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+    }
+    90% {
+        transform: translateY(0) scaleX(1);
+        animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+    95% {
+        transform: translateY(-5px);
+        animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
     }
     100% {
         transform: translateY(0);
+        animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
     }
 }
 
@@ -249,7 +266,11 @@ body {
     background-repeat: no-repeat;
     background-position-x: 0px;
     background-position-y: center;
-    animation: dipi 1.4s steps(14) both infinite, dipijump 1.4s both infinite;
+    animation: dipi 1.4s steps(14) both infinite;
+
+    &.active {
+        animation: dipijump 1.4s both, dipi 1.4s steps(14) both infinite;
+    }
 }
 
 @media not (orientation: landscape) {

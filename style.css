@@ -99,7 +99,7 @@ body {
 .daycount {
     font-size: 4em;
     text-align: center;
-    font-weight: 700;
+    font-weight: 900;
     margin-block-end: 0;
     width: 100%;
     background: linear-gradient(0deg, var(--color1) 0%, var(--color2) 100%);
@@ -127,7 +127,7 @@ body {
     color: var(--color1);
     margin: 0;
     text-align: center;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .schedulecard p {
@@ -152,7 +152,7 @@ body {
     position: absolute;
     left: calc(50% + 16px);
     margin: 0;
-    font-weight: 700;
+    font-weight: 600;
     white-space: nowrap;
     color: color-mix(in srgb, var(--color1) 70%, transparent);
 }
@@ -185,8 +185,8 @@ body {
     width: 100%;
     background-color: transparent;
     font-size: 1.5em;
-    font-family: 'LineSeed';
-    font-weight: 400;
+    font-family: 'Pretendard Variable';
+    font-weight: 350;
     border: 1.5px solid transparent;
     border-radius: 20px;
     margin-bottom: 10px;
